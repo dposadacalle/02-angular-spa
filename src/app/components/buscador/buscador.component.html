@@ -1,0 +1,36 @@
+<h1 class="text-primary text-center m-5">
+    Buscador: <small>{{termino}}</small></h1>
+
+<hr>
+
+<div class="row animated fadeInt fast" *ngIf="heroesBsArr.length === 0">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            No Éxiste resutados con el Término: <small class="text-danger">{{termino}}</small>
+        </div>
+    </div>
+</div>
+
+<div class="card-columns">
+
+    <!-- 
+        <div class="card animated fadeIn fast" *ngFor="let buscadoHeroe of heroesBsArr; let i = index">
+        <img [src]="buscadoHeroe.img" class="card-img-top" [alt]="buscadoHeroe.nombre">
+        <div class="card-body">
+            <h5 class="card-title">{{buscadoHeroe.nombre}}</h5>
+            <p class="card-text">
+                {{buscadoHeroe.bio}}
+            </p>
+            <p class="card-text"><small class="text-muted">{{buscadoHeroe.aparicion}}</small></p>
+
+            <button (click)="verHeroe(i)" type="button" class="btn btn-outline-info btn-block">
+               Ver Más ... </button>
+           
+                 <a [routerLink]="['/heroe', i]" class="btn btn-outline-info btn-block">Ver Más ...</a>
+            
+        </div>
+    </div> -->
+
+    <app-heroe-tarjeta (heroeSeleccionado)="verHeroe( $event )" [heroe]="buscadoHeroe" [index]="buscadoHeroe.index" *ngFor="let buscadoHeroe of heroesBsArr">
+    </app-heroe-tarjeta>
+</div>
